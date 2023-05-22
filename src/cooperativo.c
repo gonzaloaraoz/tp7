@@ -66,7 +66,7 @@
 #define STACK_SIZE 256
 
 /** Cantidad de tareas */
-#define TASK_COUNT 2
+#define TASK_COUNT 3
 
 /** Valor de la cuenta para la función de espera */
 #define COUNT_DELAY 3000000
@@ -129,6 +129,8 @@ void TareaA(void);
 /** @brief Función que implementa la segunda tarea del sistema */
 void TareaB(void);
 
+
+void TareaC(void);
 /* === Definiciones de variables internas ================================== */
 
 /** Espacio para la pila de las tareas */
@@ -205,6 +207,14 @@ void TareaB(void) {
     }
 }
 
+void TareaC(void) {
+    while (1) {
+        DigitalOutputToggle(board->led_verde);
+        Delay();
+    }
+}
+
+
 /* === Definiciones de funciones externas ================================== */
 int main(void) {
     /* Configuración de los dispositivos de entrada/salida */
@@ -213,6 +223,8 @@ int main(void) {
     /* Creación de las tareas del sistema */
     CrearTarea(0, TareaA);
     CrearTarea(1, TareaB);
+    CrearTarea(2, TareaC);
+
 
     /* Arranque del sistema cooperativo */
     CambioContexto();
