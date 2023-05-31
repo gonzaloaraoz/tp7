@@ -222,7 +222,7 @@ void TareaB(void) {
         DigitalOutputToggle(board->led_amarillo);
         Delay();
     }
-
+}
 
 void TareaC(void) {
     while (1) {
